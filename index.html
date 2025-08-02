@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Calm Harmony (Beige, Slate, Muted Blue, Warning Red) -->
-    <!-- Application Structure Plan: A single-page vertical scroll mirrors the leaflet's narrative. A sticky nav provides quick access. The core interaction is a clickable card system for 'Use Cases' to encourage engagement and focus attention, now including a 'Canvas' tab to explain advanced content creation and a 'Bad Examples' tab to highlight opportunity costs. This structure prioritizes simplicity and balanced, responsible guidance. -->
+    <!-- Application Structure Plan: A single-page vertical scroll mirrors the leaflet's narrative. A sticky nav provides quick access. The core interaction is a clickable card system for 'Use Cases' to encourage engagement and focus attention, now including a 'Canvas' tab to explain advanced content creation and a 'Bad Examples' tab to highlight opportunity costs. The card layout is optimized for mobile to reduce scroll distance between action and result. This structure prioritizes simplicity and balanced, responsible guidance. -->
     <!-- Visualization & Content Choices: Report Info: 'Doraemon' Intro -> Goal: Engage -> Method: Hero section. | Report Info: 'Three Promises' -> Goal: Inform -> Method: Three-column grid with icons and analogy. | Report Info: 'Use Cases' -> Goal: Organize/Demonstrate -> Method: Interactive HTML cards -> Interaction: Click to reveal details (JS). A new 'Canvas' card explains meta-capabilities. A 'Bad Example' card uses warning colors. -> Justification: Clearly separates constructive uses from detrimental ones and introduces advanced features. | Report Info: 'NotebookLM' -> Goal: Explain -> Method: HTML/CSS diagram. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -89,7 +89,7 @@
                             <span class="text-3xl mr-4">📖</span>
                             <h3 class="text-lg font-bold text-slate-700">1. 「読み飛ばさない」スキルを磨く</h3>
                         </div>
-                        <p class="text-slate-600 leading-relaxed text-sm">AIは驚くほど流暢に答えをくれます。でも、それを鵜呑みにするだけではもったいないでしょう。「本当にそうか？」と一歩立ち止まって考える癖が、読解力を本物にします。</p>
+                        <p class="text-slate-600 leading-relaxed text-sm">AIは驚くほど流暢に返事を返してくれます。でも、それを鵜呑みにしてしまうだけでは、生成AIのよい使い方とは言えません。「本当にそうか？」と一歩立ち止まって考える癖が、読解力を本物にします。</p>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 transform hover:-translate-y-1 transition-transform duration-300">
                         <div class="flex items-center mb-4">
@@ -111,43 +111,36 @@
 
         <section id="how-to-use" class="mb-20 md:mb-32">
             <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-4">Geminiを「最強の学習パートナー」にする活用術</h2>
-            <p class="text-center text-slate-500 mb-10">下のカードをクリックまたはタップして、具体的な使い方を見てみましょう。</p>
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 mb-8">
-                    <button data-target="content-translator" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
-                        <span class="text-3xl">🗣️</span>
-                        <h3 class="font-bold mt-2 text-sm md:text-base">翻訳家</h3>
-                        <p class="text-xs text-slate-500">難しい言葉を、自分の言葉に</p>
+            <p class="text-center text-slate-500 mb-10">下のアイコンをタップして、具体的な使い方を見てみましょう。</p>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-4 md:grid-cols-7 gap-2 mb-6">
+                    <button data-target="content-translator" class="use-case-card flex flex-col items-center justify-start text-center p-2 border-2 border-gray-300 rounded-lg transition-all duration-300 aspect-square">
+                        <span class="text-2xl md:text-3xl">🗣️</span>
+                        <h3 class="font-bold mt-1 text-[10px] md:text-xs leading-tight">翻訳家</h3>
                     </button>
-                    <button data-target="content-sounding-board" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
-                        <span class="text-3xl">💡</span>
-                        <h3 class="font-bold mt-2 text-sm md:text-base">壁打ち相手</h3>
-                        <p class="text-xs text-slate-500">アイデアを、もっと深める</p>
+                     <button data-target="content-sounding-board" class="use-case-card flex flex-col items-center justify-start text-center p-2 border-2 border-gray-300 rounded-lg transition-all duration-300 aspect-square">
+                        <span class="text-2xl md:text-3xl">💡</span>
+                        <h3 class="font-bold mt-1 text-[10px] md:text-xs leading-tight">壁打ち相手</h3>
                     </button>
-                    <button data-target="content-quiz-master" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
-                        <span class="text-3xl">❓</span>
-                        <h3 class="font-bold mt-2 text-sm md:text-base">クイズマスター</h3>
-                        <p class="text-xs text-slate-500">知識の定着度をチェック</p>
+                    <button data-target="content-quiz-master" class="use-case-card flex flex-col items-center justify-start text-center p-2 border-2 border-gray-300 rounded-lg transition-all duration-300 aspect-square">
+                        <span class="text-2xl md:text-3xl">❓</span>
+                        <h3 class="font-bold mt-1 text-[10px] md:text-xs leading-tight">クイズマスター</h3>
                     </button>
-                    <button data-target="content-designer" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
-                        <span class="text-3xl">🎨</span>
-                        <h3 class="font-bold mt-2 text-sm md:text-base">デザイナー</h3>
-                        <p class="text-xs text-slate-500">複雑な情報を、構造化する</p>
+                    <button data-target="content-designer" class="use-case-card flex flex-col items-center justify-start text-center p-2 border-2 border-gray-300 rounded-lg transition-all duration-300 aspect-square">
+                        <span class="text-2xl md:text-3xl">🎨</span>
+                        <h3 class="font-bold mt-1 text-[10px] md:text-xs leading-tight">デザイナー</h3>
                     </button>
-                    <button data-target="content-project-manager" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
-                        <span class="text-3xl">📋</span>
-                        <h3 class="font-bold mt-2 text-sm md:text-base">マネージャー</h3>
-                        <p class="text-xs text-slate-500">複雑なタスクを、整理整頓</p>
+                    <button data-target="content-project-manager" class="use-case-card flex flex-col items-center justify-start text-center p-2 border-2 border-gray-300 rounded-lg transition-all duration-300 aspect-square">
+                        <span class="text-2xl md:text-3xl">📋</span>
+                        <h3 class="font-bold mt-1 text-[10px] md:text-xs leading-tight">マネージャー</h3>
                     </button>
-                    <button data-target="content-canvas" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
-                        <span class="text-3xl">✨</span>
-                        <h3 class="font-bold mt-2 text-sm md:text-base">Canvas</h3>
-                        <p class="text-xs text-slate-500">アイデアを、形にする</p>
+                    <button data-target="content-canvas" class="use-case-card flex flex-col items-center justify-start text-center p-2 border-2 border-gray-300 rounded-lg transition-all duration-300 aspect-square">
+                        <span class="text-2xl md:text-3xl">✨</span>
+                        <h3 class="font-bold mt-1 text-[10px] md:text-xs leading-tight">Canvas</h3>
                     </button>
-                    <button data-target="content-bad-example" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300 col-span-2 sm:col-span-3 lg:col-span-3">
-                        <span class="text-3xl">⚠️</span>
-                        <h3 class="font-bold mt-2 text-sm md:text-base">ダメな例：失われる機会</h3>
-                        <p class="text-xs text-slate-500">思考の「丸投げ」は、成長のチャンスを逃すことになります。</p>
+                    <button data-target="content-bad-example" class="use-case-card flex flex-col items-center justify-start text-center p-2 border-2 border-gray-300 rounded-lg transition-all duration-300 aspect-square">
+                        <span class="text-2xl md:text-3xl">⚠️</span>
+                        <h3 class="font-bold mt-1 text-[10px] md:text-xs leading-tight">ダメな例</h3>
                     </button>
                 </div>
                 <div id="use-case-content-area" class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 min-h-[350px]">
@@ -156,6 +149,8 @@
                         <p class="text-slate-600 mb-4">教科書の難しい記述や専門用語、外国語の文章などを、理解しやすい形に変換してもらいましょう。</p>
                         <div class="space-y-3">
                             <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>「浸透圧」について、小学生が理科の自由研究で発表するようなイメージで、たとえ話を使いながら説明してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>英語の教科書のこの一文が理解できません。「The very thing that makes AI so powerful is also what makes it a potential risk.」文法的な解説と、自然な日本語訳を教えてください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>古文の「いとをかし」という言葉は、現代語だとどのようなニュアンスになりますか？3つほどの異なる文脈での使われ方と、それぞれの訳を教えてください。</p></div>
                         </div>
                     </div>
                     <div id="content-sounding-board" class="use-case-content hidden">
@@ -163,6 +158,8 @@
                         <p class="text-slate-600 mb-4">レポートのテーマや構成、文化祭の企画など、一人で悩んでいることを相談してみましょう。思考を整理し、新しい視点をくれます。</p>
                         <div class="space-y-3">
                             <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>「SNSが若者に与える影響」についてレポートを書きたいです。ポジティブな側面とネガティブな側面から、考えられる論点を5つずつ挙げてください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>文化祭で「環境問題」をテーマにした展示を企画しています。中学生や高校生が興味を持つような、参加型のアクティビティのアイデアを3つ提案してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>ディベートの「学校の制服は廃止すべきか」というテーマで、肯定側の立場でスピーチをします。主張の柱となる3つのポイントと、それぞれを補強する具体的な理由を考えてください。</p></div>
                         </div>
                     </div>
                     <div id="content-quiz-master" class="use-case-content hidden">
@@ -170,6 +167,8 @@
                         <p class="text-slate-600 mb-4">授業で習った範囲や、テスト前に覚えたい事柄について、クイズを出してもらいましょう。ゲーム感覚で楽しく復習ができます。</p>
                         <div class="space-y-3">
                             <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>中学歴史の「鎌倉時代」の範囲から、一問一答形式のクイズを10問出してください。問題の後に、改行して答えを書いてください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>高校1年生レベルの英単語で、意味が混同しやすい単語のペア（例: affect/effect）を使った間違い探しクイズを5問作ってください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>化学の「イオン式」について、高校化学基礎レベルの穴埋め問題を10問作成してください。（例: ナトリウムイオンの化学式は __ です）</p></div>
                         </div>
                     </div>
                     <div id="content-designer" class="use-case-content hidden">
@@ -177,6 +176,8 @@
                         <p class="text-slate-600 mb-4">歴史の年表や複雑な関係図、プレゼンの構成案など、情報を整理して構造化する手助けをしてもらいましょう。</p>
                         <div class="space-y-3">
                             <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>日本の「戦国時代」の主要な武将たちの関係性を、相関図を作るためのテキスト情報として整理してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>第二次世界大戦のヨーロッパ戦線について、1939年から1945年までの主要な出来事をまとめた年表を作成してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>「再生可能エネルギー」についてのプレゼンテーションをします。導入、本論（3つの柱）、結論という構成で、それぞれのパートで話すべき内容の骨子を箇条書きで示してください。</p></div>
                         </div>
                     </div>
                     <div id="content-project-manager" class="use-case-content hidden">
@@ -184,6 +185,8 @@
                         <p class="text-slate-600 mb-4">文化祭や体育祭などの行事準備は、やることがたくさん。今決まっていること、未定なこと、締め切りなどを丁寧に説明すれば、AIは問題を切り分け、冷静にやるべきこと（TODO）を整理してくれる、有能な秘書やマネージャーになります。</p>
                         <div class="space-y-3">
                             <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>文化祭でクラスの出し物として「お化け屋敷」を企画しています。現状、担当者（装飾、音響、衣装）は決まっていますが、具体的な内容は未定です。開催まであと1ヶ月です。これから決めるべきことと、それぞれのタスクの締め切り案を盛り込んだTODOリストを作成してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>体育祭の応援団長になりました。メンバーは10人です。応援合戦の演目を1ヶ月で完成させる必要があります。練習計画のスケジュール案を、週ごとのマイルストーンを設定して作成してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>「地域の歴史」についての探究学習で4人グループのリーダーです。テーマは決まりましたが、役割分担がまだです。資料収集、現地調査、レポート作成、発表準備というタスクがある場合、どのような役割分担が考えられますか？それぞれの役割の具体的な作業内容も示してください。</p></div>
                         </div>
                     </div>
                     <div id="content-canvas" class="use-case-content hidden">
@@ -222,7 +225,7 @@
                         <div class="space-y-4">
                             <div>
                                 <h4 class="font-bold text-blue-700">いつでも頼れる専属家庭教師</h4>
-                                <p class="text-sm text-slate-500">教科書の内容について、「この部分がよくわかりません」と聞けば、いつでも、何度でも、正確に教えてくれます。</p>
+                                <p class="text-sm text-slate-500">教科書のPDFデータを資料としてアップしたNotebookLMに、「この部分がよくわかりません」と聞けば、いつでも、何度でも、教科書の内容に基づいて、より正確に教えてくれます。</p>
                             </div>
                             <div>
                                 <h4 class="font-bold text-blue-700">探究学習の最強サポーター</h4>
