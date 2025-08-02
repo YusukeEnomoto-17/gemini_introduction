@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来の道具とどう付き合うか？ | 昭和学院 生成AI活用ガイド</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Beige, Slate, Muted Blue, Warning Red) -->
+    <!-- Application Structure Plan: A single-page vertical scroll mirrors the leaflet's narrative. A sticky nav provides quick access. The core interaction is a clickable card system for 'Use Cases' to encourage engagement and focus attention, now including a 'Bad Examples' tab to highlight opportunity costs. This structure prioritizes simplicity and balanced, responsible guidance. -->
+    <!-- Visualization & Content Choices: Report Info: 'Doraemon' Intro -> Goal: Engage -> Method: Hero section. | Report Info: 'Three Promises' -> Goal: Inform -> Method: Three-column grid with icons and analogy. | Report Info: 'Use Cases' -> Goal: Organize/Demonstrate -> Method: Interactive HTML cards -> Interaction: Click to reveal details (JS). A new 'Bad Example' card uses warning colors to contrast with positive examples. -> Justification: Clearly separates constructive uses from detrimental ones. | Report Info: 'NotebookLM' -> Goal: Explain -> Method: HTML/CSS diagram. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #FDFBF6;
+            color: #334155;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .active-nav {
+            font-weight: 700;
+            color: #2563EB;
+            border-bottom: 2px solid #2563EB;
+        }
+        .card-active {
+            border-color: #2563EB;
+            background-color: #EFF6FF;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .card-active.bad-example-active {
+            border-color: #DC2626;
+            background-color: #FEF2F2;
+        }
+        .content-visible {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+
+    <header id="main-header" class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3">
+            <ul class="flex justify-center items-center space-x-4 md:space-x-8 text-sm md:text-base text-slate-600">
+                <li><a href="#intro" class="nav-link py-2 hover:text-blue-600 transition-all duration-300">はじめに</a></li>
+                <li><a href="#promises" class="nav-link py-2 hover:text-blue-600 transition-all duration-300">３つの約束</a></li>
+                <li><a href="#how-to-use" class="nav-link py-2 hover:text-blue-600 transition-all duration-300">活用術</a></li>
+                <li><a href="#future" class="nav-link py-2 hover:text-blue-600 transition-all duration-300">未来の学習</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+
+        <section id="intro" class="text-center mb-20 md:mb-32">
+            <h1 class="text-3xl md:text-5xl font-bold text-slate-800 mb-4">未来の道具とどう付き合うか？</h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-8">昭和学院生の皆さんへ 生成AI（Gemini）活用ガイド</p>
+            
+            <div class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200">
+                <h2 class="text-xl md:text-2xl font-bold text-blue-700 mb-4">はじめに：どのような「のび太」になりますか？</h2>
+                <p class="text-left leading-relaxed text-slate-700">
+                    もし「ドラえもん」のひみつ道具が手に入ったら、どう使うでしょうか？<br>
+                    宿題を全部やってもらうだけの「のび太」でいることもできます。でも、映画の彼は、ひみつ道具を手に、勇気を出して冒険へ踏み出していたはずです。皆さんも、そんな「かっこいいのび太」の姿を知っているのではないでしょうか。<br><br>
+                    生成AIは、まさに現代のひみつ道具です。使い方次第で、学びをどこまでも面白くしてくれます。道具に頼りきるのか、道具を使いこなし未来を切り拓くのか。その選択は、皆さん自身に委ねられています。
+                </p>
+            </div>
+        </section>
+
+        <section id="promises" class="mb-20 md:mb-32">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-10">生成AIと付き合うための「３つの約束」</h2>
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg mb-12" role="alert">
+                    <p class="font-bold">思考のトレーニング</p>
+                    <p>例えば、**「自分の代わりにトレーニングをしてくれるロボット」**がいたとします。ロボットがどれだけ頑張っても、自分自身の身体が鍛えられることはありません。AIとの関係もそれと同じです。AIに答えを出してもらうだけでは、自分自身の「思考力」は鍛えられません。だからこそ、次の３つの約束を意識してみてください。</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 transform hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">📖</span>
+                            <h3 class="text-lg font-bold text-slate-700">1. 「読み飛ばさない」スキルを磨く</h3>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed text-sm">AIは驚くほど流暢に答えをくれます。でも、それを鵜呑みにするだけではもったいないでしょう。「本当にそうか？」と一歩立ち止まって考える癖が、読解力を本物にします。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 transform hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🧠</span>
+                            <h3 class="text-lg font-bold text-slate-700">2. 「わかったつもり」から一歩先へ</h3>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed text-sm">AIの説明で「なるほど！」と感じた瞬間、そこが本当のスタートラインです。その「わかったつもり」を「本物の理解」に変える工夫が大切になります。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 transform hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">💬</span>
+                            <h3 class="text-lg font-bold text-slate-700">3. 「ちゃんと対話する」ことを意識する</h3>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed text-sm">AIには、私たちの顔色をうかがう「目」も、声のトーンを聞き分ける「耳」もありません。だからこそ、私たちが「丁寧な言葉で、具体的に」伝える必要があります。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to-use" class="mb-20 md:mb-32">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-4">Geminiを「最強の学習パートナー」にする活用術</h2>
+            <p class="text-center text-slate-500 mb-10">下のカードをクリックまたはタップして、具体的な使い方を見てみましょう。</p>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+                    <button data-target="content-translator" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
+                        <span class="text-3xl">🗣️</span>
+                        <h3 class="font-bold mt-2 text-sm md:text-base">翻訳家</h3>
+                        <p class="text-xs text-slate-500">難しい言葉を、自分の言葉に</p>
+                    </button>
+                    <button data-target="content-sounding-board" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
+                        <span class="text-3xl">💡</span>
+                        <h3 class="font-bold mt-2 text-sm md:text-base">壁打ち相手</h3>
+                        <p class="text-xs text-slate-500">アイデアを、もっと深める</p>
+                    </button>
+                    <button data-target="content-quiz-master" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
+                        <span class="text-3xl">❓</span>
+                        <h3 class="font-bold mt-2 text-sm md:text-base">クイズマスター</h3>
+                        <p class="text-xs text-slate-500">知識の定着度をチェック</p>
+                    </button>
+                    <button data-target="content-designer" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
+                        <span class="text-3xl">🎨</span>
+                        <h3 class="font-bold mt-2 text-sm md:text-base">デザイナー</h3>
+                        <p class="text-xs text-slate-500">複雑な情報を、構造化する</p>
+                    </button>
+                    <button data-target="content-project-manager" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
+                        <span class="text-3xl">📋</span>
+                        <h3 class="font-bold mt-2 text-sm md:text-base">マネージャー</h3>
+                        <p class="text-xs text-slate-500">複雑なタスクを、整理整頓</p>
+                    </button>
+                    <button data-target="content-bad-example" class="use-case-card p-4 border-2 border-gray-300 rounded-lg text-left transition-all duration-300">
+                        <span class="text-3xl">⚠️</span>
+                        <h3 class="font-bold mt-2 text-sm md:text-base">ダメな例</h3>
+                        <p class="text-xs text-slate-500">失われる機会</p>
+                    </button>
+                </div>
+                <div id="use-case-content-area" class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 min-h-[350px]">
+                    <div id="content-translator" class="use-case-content hidden">
+                        <h4 class="text-lg font-bold text-blue-700 mb-2">難しい言葉を、自分の言葉に</h4>
+                        <p class="text-slate-600 mb-4">教科書の難しい記述や専門用語、外国語の文章などを、理解しやすい形に変換してもらいましょう。</p>
+                        <div class="space-y-3">
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>「浸透圧」について、小学生が理科の自由研究で発表するようなイメージで、たとえ話を使いながら説明してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>英語の教科書のこの一文が理解できません。「The very thing that makes AI so powerful is also what makes it a potential risk.」文法的な解説と、自然な日本語訳を教えてください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>古文の「いとをかし」という言葉は、現代語だとどのようなニュアンスになりますか？3つほどの異なる文脈での使われ方と、それぞれの訳を教えてください。</p></div>
+                        </div>
+                    </div>
+                    <div id="content-sounding-board" class="use-case-content hidden">
+                        <h4 class="text-lg font-bold text-blue-700 mb-2">アイデアを、もっと深める</h4>
+                        <p class="text-slate-600 mb-4">レポートのテーマや構成、文化祭の企画など、一人で悩んでいることを相談してみましょう。思考を整理し、新しい視点をくれます。</p>
+                        <div class="space-y-3">
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>「SNSが若者に与える影響」についてレポートを書きたいです。ポジティブな側面とネガティブな側面から、考えられる論点を5つずつ挙げてください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>文化祭で「環境問題」をテーマにした展示を企画しています。中学生や高校生が興味を持つような、参加型のアクティビティのアイデアを3つ提案してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>ディベートの「学校の制服は廃止すべきか」というテーマで、肯定側の立場でスピーチをします。主張の柱となる3つのポイントと、それぞれを補強する具体的な理由を考えてください。</p></div>
+                        </div>
+                    </div>
+                    <div id="content-quiz-master" class="use-case-content hidden">
+                        <h4 class="text-lg font-bold text-blue-700 mb-2">知識の定着度をチェック</h4>
+                        <p class="text-slate-600 mb-4">授業で習った範囲や、テスト前に覚えたい事柄について、クイズを出してもらいましょう。ゲーム感覚で楽しく復習ができます。</p>
+                        <div class="space-y-3">
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>中学歴史の「鎌倉時代」の範囲から、一問一答形式のクイズを10問出してください。問題の後に、改行して答えを書いてください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>高校1年生レベルの英単語で、意味が混同しやすい単語のペア（例: affect/effect）を使った間違い探しクイズを5問作ってください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>化学の「イオン式」について、高校化学基礎レベルの穴埋め問題を10問作成してください。（例: ナトリウムイオンの化学式は __ です）</p></div>
+                        </div>
+                    </div>
+                    <div id="content-designer" class="use-case-content hidden">
+                        <h4 class="text-lg font-bold text-blue-700 mb-2">複雑な情報を、一目でわかる形に</h4>
+                        <p class="text-slate-600 mb-4">歴史の年表や複雑な関係図、プレゼンの構成案など、情報を整理して構造化する手助けをしてもらいましょう。</p>
+                        <div class="space-y-3">
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>日本の「戦国時代」の主要な武将たちの関係性を、相関図を作るためのテキスト情報として整理してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>第二次世界大戦のヨーロッパ戦線について、1939年から1945年までの主要な出来事をまとめた年表を作成してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>「再生可能エネルギー」についてのプレゼンテーションをします。導入、本論（3つの柱）、結論という構成で、それぞれのパートで話すべき内容の骨子を箇条書きで示してください。</p></div>
+                        </div>
+                    </div>
+                    <div id="content-project-manager" class="use-case-content hidden">
+                        <h4 class="text-lg font-bold text-blue-700 mb-2">複雑なタスクを、整理整頓</h4>
+                        <p class="text-slate-600 mb-4">文化祭や体育祭などの行事準備は、やることがたくさん。今決まっていること、未定なこと、締め切りなどを丁寧に説明すれば、AIは問題を切り分け、冷静にやるべきこと（TODO）を整理してくれる、有能な秘書やマネージャーになります。</p>
+                        <div class="space-y-3">
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 1：</strong><br>文化祭でクラスの出し物として「お化け屋敷」を企画しています。現状、担当者（装飾、音響、衣装）は決まっていますが、具体的な内容は未定です。開催まであと1ヶ月です。これから決めるべきことと、それぞれのタスクの締め切り案を盛り込んだTODOリストを作成してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 2：</strong><br>体育祭の応援団長になりました。メンバーは10人です。応援合戦の演目を1ヶ月で完成させる必要があります。練習計画のスケジュール案を、週ごとのマイルストーンを設定して作成してください。</p></div>
+                            <div class="bg-slate-100 p-3 rounded-lg"><p class="font-mono text-xs md:text-sm text-slate-800"><strong>プロンプト例 3：</strong><br>「地域の歴史」についての探究学習で4人グループのリーダーです。テーマは決まりましたが、役割分担がまだです。資料収集、現地調査、レポート作成、発表準備というタスクがある場合、どのような役割分担が考えられますか？それぞれの役割の具体的な作業内容も示してください。</p></div>
+                        </div>
+                    </div>
+                    <div id="content-bad-example" class="use-case-content hidden">
+                        <h4 class="text-lg font-bold text-red-700 mb-2">やってはいけない使い方（機会損失）</h4>
+                        <p class="text-slate-600 mb-4">AIに思考そのものを「丸投げ」すると、本物の力を身につける貴重な機会を失ってしまいます。これは、自分の代わりにロボットに筋トレをさせるのと同じです。</p>
+                        <div class="space-y-3">
+                            <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
+                                <p class="font-bold text-red-800">代わりにレポートを書いてもらう</p>
+                                <p class="text-sm text-red-700">→ <strong>失うもの：</strong> 情報を整理し、論理的に考え、自分の言葉で表現する「思考力・表現力」を鍛える機会。</p>
+                            </div>
+                            <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
+                                <p class="font-bold text-red-800">代わりに志望理由書を書いてもらう</p>
+                                <p class="text-sm text-red-700">→ <strong>失うもの：</strong> これまでの自分を深く振り返り、将来の夢や目標と向き合う「自己分析」の貴重な機会。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="future" class="mb-16 md:mb-24">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-10">【未来の学習】<br class="md:hidden">NotebookLMで、自分だけの家庭教師を</h2>
+            <div class="max-w-5xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-slate-600 leading-relaxed mb-6">これから皆さんが使えるようになる「NotebookLM」は、さらに優れています。これは、アップロードした資料（教科書、PDF、ノートなど）だけを完璧に学習した、<strong>皆さん専用のAI</strong>です。</p>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-blue-700">いつでも頼れる専属家庭教師</h4>
+                                <p class="text-sm text-slate-500">教科書の内容について、「この部分がよくわかりません」と聞けば、いつでも、何度でも、正確に教えてくれます。</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-blue-700">探究学習の最強サポーター</h4>
+                                <p class="text-sm text-slate-500">複数の資料から関連情報を抜き出し、比較・整理。皆さんは「考える」ことに集中できます。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex justify-center items-center p-8">
+                        <div class="relative w-64 h-48">
+                            <div class="absolute top-8 left-0 w-12 h-16 bg-yellow-200 rounded shadow-md transform -rotate-12 border-2 border-yellow-300"></div>
+                            <div class="absolute top-4 right-4 w-12 h-16 bg-green-200 rounded shadow-md transform rotate-6 border-2 border-green-300"></div>
+                            <div class="absolute bottom-0 left-8 w-12 h-16 bg-red-200 rounded shadow-md transform rotate-3 border-2 border-red-300"></div>
+                            <div class="absolute w-full h-full flex justify-center items-center">
+                                <div class="w-48 h-32 bg-slate-700 rounded-lg shadow-2xl flex flex-col p-2 border-2 border-slate-500">
+                                    <div class="flex-grow bg-slate-800 rounded-t-md p-2 text-blue-300 font-mono text-xs animate-pulse">
+                                        &gt; NotebookLM Ready...
+                                    </div>
+                                    <div class="h-2 bg-slate-600 rounded-b-md"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-xl md:text-2xl font-bold mb-4">未来は、私たちの手の中に</h3>
+            <p class="max-w-3xl mx-auto text-slate-300 leading-relaxed">
+                生成AIは、魔法の杖ではありません。しかし、皆さんの「知りたい」「学びたい」という気持ちを、これまでにないレベルでサポートしてくれる強力なツールです。<br><br>
+                受け身で使うのではなく、主体的に、創造的に使いこなしてください。この新しい道具との出会いが、皆さんの可能性を無限に広げることを願っています。
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const useCaseCards = document.querySelectorAll('.use-case-card');
+            const useCaseContents = document.querySelectorAll('.use-case-content');
+            const firstCard = useCaseCards[0];
+            const firstContent = document.getElementById(firstCard.dataset.target);
+
+            function activateTab(card, content) {
+                useCaseCards.forEach(c => {
+                    c.classList.remove('card-active', 'bad-example-active');
+                });
+                card.classList.add('card-active');
+                if (card.dataset.target === 'content-bad-example') {
+                    card.classList.add('bad-example-active');
+                }
+
+                useCaseContents.forEach(cont => {
+                    cont.classList.add('hidden');
+                    cont.classList.remove('content-visible');
+                });
+                content.classList.remove('hidden');
+                content.classList.add('content-visible');
+            }
+            
+            activateTab(firstCard, firstContent);
+
+            useCaseCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const targetContent = document.getElementById(this.dataset.target);
+                    activateTab(this, targetContent);
+                });
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main > section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-50% 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active-nav', link.getAttribute('href') === `#${id}`);
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
